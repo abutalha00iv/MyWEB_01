@@ -38,9 +38,6 @@ export const metadata: Metadata = {
   icons: {
     icon: "/assets/logo/monogram.svg",
   },
-  verification: {
-    google: "V5Gv2SdQFQElOmKj2raZOsnH0B4-XBe8SGXL_rqQYDA",
-  },
 };
 
 export default function RootLayout({
