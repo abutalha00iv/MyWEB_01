@@ -4,7 +4,9 @@ export const siteConfig = {
   motto: "Every website deserves to be beautiful, fast, and safe.",
   description:
     "Aureth Tyrian is a premium web design and software studio building websites that are beautiful, fast, and secure.",
-  url: "https://aurethtyrian.com",
+  // TODO: switch to the custom domain once it's connected, then run
+  // Search Console's "Change of Address" tool to migrate indexing cleanly.
+  url: "https://aureth-tyrian.vercel.app",
   founder: "Abu Talha",
   founderRole: "Founder & Managing Director",
   founded: 2026,
