@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  --color-ivory: #faf8f4;
+  --color-warmgray: #f1ede6;
+  --color-ink: #1c1917;
+  --color-plum: #5b1244;
+  --color-plum-dark: #3d0c2d;
+  --color-plum-light: #7a2262;
+  --color-gold: #a8894c;
+  --color-gold-light: #c7ad7a;
+  --color-gold-pale: #e8dfc9;
+}
+
+@theme inline {
+  --color-ivory: var(--color-ivory);
+  --color-warmgray: var(--color-warmgray);
+  --color-ink: var(--color-ink);
+  --color-plum: var(--color-plum);
+  --color-plum-dark: var(--color-plum-dark);
+  --color-plum-light: var(--color-plum-light);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-pale: var(--color-gold-pale);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-drift-a: drift-a 22s ease-in-out infinite alternate;
+  --animate-drift-b: drift-b 26s ease-in-out infinite alternate;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drift-a {
+    from {
+      transform: translate(0, 0) scale(1);
+    }
+    to {
+      transform: translate(-8%, 10%) scale(1.12);
+    }
+  }
+
+  @keyframes drift-b {
+    from {
+      transform: translate(0, 0) scale(1);
+    }
+    to {
+      transform: translate(10%, -8%) scale(1.08);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-plum);
+  color: var(--color-ivory);
+}
+
+/* Visible focus rings for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-plum);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.measure {
+  max-width: 68ch;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-plum);
+}
+
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-gold) 15%,
+    var(--color-gold) 85%,
+    transparent
+  );
+}
+
+.fade-up {
+  opacity: 0;
+}
+
+.fade-up.is-visible {
+  animation: var(--animate-fade-up);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-up {
+    opacity: 1;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

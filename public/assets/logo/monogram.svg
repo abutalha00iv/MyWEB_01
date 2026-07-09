@@ -1,0 +1,16 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aureth Tyrian monogram">
+  <!-- caret / chevron accent -->
+  <polygon points="50,9 62,26 55,26 50,17 45,26 38,26" fill="currentColor" />
+  <!-- pediment bar -->
+  <rect x="21" y="26" width="58" height="8" fill="currentColor" />
+  <!-- left leg -->
+  <polygon points="27,34 37,34 23,84 11,84" fill="currentColor" />
+  <polygon points="4,84 30,84 30,90 4,90" fill="currentColor" />
+  <!-- right leg -->
+  <polygon points="73,34 63,34 77,84 89,84" fill="currentColor" />
+  <polygon points="70,84 96,84 96,90 70,90" fill="currentColor" />
+  <!-- T stem: short, top side only, stops at the crossbar -->
+  <rect x="44" y="30" width="12" height="32" fill="currentColor" />
+  <!-- crossbar -->
+  <rect x="30" y="54" width="40" height="8" fill="currentColor" />
+</svg>

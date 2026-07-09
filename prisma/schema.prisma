@@ -1,0 +1,102 @@
+// Aureth Tyrian — Prisma schema
+// SQLite datastore so the admin panel can manage all content locally.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id              String   @id @default(cuid())
+  title           String
+  slug            String   @unique
+  summary         String
+  brief           String
+  approach        String
+  result          String
+  body            String   @default("")
+  liveUrl         String?
+  tags            String   @default("")
+  featured        Boolean  @default(false)
+  order           Int      @default(0)
+  metaTitle       String?
+  metaDescription String?
+  images          ProjectImage[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model ProjectImage {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String  @default("")
+  order     Int     @default(0)
+}
+
+model Service {
+  id              String   @id @default(cuid())
+  title           String
+  slug            String   @unique
+  summary         String
+  included        String
+  process         String
+  timeline        String
+  startingPrice   String
+  faq             String   @default("[]")
+  order           Int      @default(0)
+  metaTitle       String?
+  metaDescription String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Testimonial {
+  id         String  @id @default(cuid())
+  quote      String
+  clientName String
+  role       String
+  visible    Boolean @default(true)
+  order      Int     @default(0)
+}
+
+model PricingPackage {
+  id          String  @id @default(cuid())
+  serviceArea String
+  name        String
+  price       String
+  description String
+  features    String  @default("[]")
+  excluded    String  @default("[]")
+  order       Int     @default(0)
+  highlighted Boolean @default(false)
+}
+
+model ContactSubmission {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  company     String?
+  service     String
+  budget      String
+  timeline    String
+  description String
+  read        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model SiteSettings {
+  id                 Int     @id @default(1)
+  contactEmail       String  @default("hello@aurethtyrian.com")
+  socialLinks        String  @default("{}")
+  announcementText   String  @default("")
+  announcementActive Boolean @default(false)
+  privacyPolicy      String  @default("")
+  termsOfService     String  @default("")
+}
